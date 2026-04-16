@@ -3,7 +3,7 @@ const db = require("../database/db");
 
 // ROUTES
 const networkRoutes = require("./routes_networkEvents");
-const incidentRoutes = require("./routes_incidents"); // <-- ADD THIS (Day 5)
+// const incidentRoutes = require("./routes_incidents"); // <-- ADD THIS (Day 5)
 
 const app = express();
 
@@ -41,7 +41,7 @@ app.use("/api/network-events", networkRoutes);
 // =========================
 // INCIDENTS (Day 5)
 // =========================
-app.use("/api/incidents", incidentRoutes);
+// app.use("/api/incidents", incidentRoutes);
 
 // =========================
 // HEALTH CHECK (optional)
