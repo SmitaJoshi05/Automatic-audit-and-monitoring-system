@@ -3,7 +3,7 @@ const db = require("../database/db");
 
 // ROUTES
 const networkRoutes = require("./routes_networkEvents");
-// const incidentRoutes = require("./routes_incidents"); // <-- ADD THIS (Day 5)
+// const incidentRoutes = require("./routes_incidents"); // enable after Day 5 is ready
 
 const app = express();
 
@@ -13,16 +13,14 @@ app.use(express.json());
 // EVENT INGESTION API (Day 1)
 // =========================
 app.post("/event", (req, res) => {
-
   const { event_type, source_ip, username, message } = req.body;
 
   const query = `
-    INSERT INTO events(event_type, source_ip, username, message)
+    INSERT INTO events (event_type, source_ip, username, message)
     VALUES (?, ?, ?, ?)
   `;
 
-  db.query(query, [event_type, source_ip, username, message], (err, result) => {
-
+  db.query(query, [event_type, source_ip, username, message], (err) => {
     if (err) {
       console.error("DB Error:", err);
       return res.status(500).send("Database error");
@@ -41,9 +39,11 @@ app.use("/api", networkRoutes);
 // =========================
 // INCIDENTS (Day 5)
 // =========================
-// app.use("/api/incidents", incidentRoutes);
+// Keep disabled until rule engine + routes are verified
+// app.use("/api", incidentRoutes);
 
-// =========================// HEALTH CHECK (optional)
+// =========================
+// HEALTH CHECK
 // =========================
 app.get("/", (req, res) => {
   res.send("AIMMS Backend Running");
