@@ -43,8 +43,7 @@ app.use("/api", networkRoutes);
 // =========================
 // app.use("/api/incidents", incidentRoutes);
 
-// =========================
-// HEALTH CHECK (optional)
+// =========================// HEALTH CHECK (optional)
 // =========================
 app.get("/", (req, res) => {
   res.send("AIMMS Backend Running");
